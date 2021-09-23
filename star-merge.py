@@ -1,0 +1,32 @@
+import csv
+import pandas as pd
+
+file1 = "brightstars.csv"
+file2 = "dwarves.csv"
+d1 = []
+d2 = []
+with open (file1, 'r', encoding = 'utf8') as f:
+    csv_reader = csv.reader(f)
+    for i in csv_reader:
+        d1.append(i)
+with open (file2, 'r', encoding = 'utf8') as f:
+    csv_reader = csv.reader(f)
+    for i in csv_reader:
+        d2.append(i)
+
+h1 = d1[0]
+h2 = d2[0]
+
+stardata = d1[1:]
+s2 = d2[1:]
+h = h1+h2
+data = []
+for i in stardata:
+    data.append(i)
+for i in s2:
+    data.append(i)
+
+with open("totalstars.csv", 'w', encoding = 'utf8') as file:
+    writer = csv.writer(file)
+    writer.writerow(h)
+    writer.writerows(data)
